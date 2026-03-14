@@ -10,5 +10,7 @@ async def start(message: Message):
 
 @router.message(Command('iscroecho'))
 async def iscroecho(message: Message):
-    print(message.text)
-    return await message.answer(f"Ви напейсали: «dbg».")
+    entry = (message.text).split(maxsplit=1)[1:]
+    if len(entry) == 0:
+        return await message.answer(f"Ви напейсали: пустоту.")
+    return await message.answer(f"Ви напейсали: «{entry[0]}».")
