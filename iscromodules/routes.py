@@ -5,11 +5,13 @@ from aiogram import F, Router
 from aiogram.filters import and_f, Command, CommandStart
 from aiogram.types import Message
 
+from iscromodules.keyboards import main_keyboard, settings_keyboard, get_arr_keyboard
+
 router = Router()
 
 @router.message(CommandStart())
 async def start(message: Message):
-    await message.answer("I am born.")
+    await message.answer("I am born.", reply_markup=get_arr_keyboard())
 
 @router.message(Command("iscroecho"))
 async def echo(message: Message):
